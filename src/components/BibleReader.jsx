@@ -91,10 +91,10 @@ export default function BibleReader({ onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-      <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden border border-white/10">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden border border-purple-200">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-purple-500 to-orange-500 p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-4xl">📖</span>
             <div>
@@ -119,12 +119,12 @@ export default function BibleReader({ onClose }) {
 
         <div className="flex h-[calc(90vh-100px)]">
           {/* Sidebar - Lista de Livros */}
-          <div className={`${showBookList ? 'w-full md:w-80' : 'w-0 md:w-80'} transition-all duration-300 overflow-hidden border-r border-white/10`}>
-            <div className="p-4 bg-white/5">
+          <div className={`${showBookList ? 'w-full md:w-80' : 'w-0 md:w-80'} transition-all duration-300 overflow-hidden border-r border-purple-100 bg-gradient-to-b from-purple-50 to-orange-50`}>
+            <div className="p-4 bg-white/50">
               <input
                 type="text"
                 placeholder="Buscar livro..."
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 bg-white border border-purple-100 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-300"
               />
             </div>
             <div className="overflow-y-auto h-full custom-scrollbar p-4">
@@ -134,8 +134,8 @@ export default function BibleReader({ onClose }) {
                   onClick={() => handleBookSelect(book)}
                   className={`w-full text-left px-4 py-3 rounded-xl mb-2 transition-all ${
                     selectedBook?.id === book.id
-                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
-                      : 'bg-white/5 text-white/80 hover:bg-white/10'
+                      ? 'bg-gradient-to-r from-purple-500 to-orange-500 text-white shadow-md'
+                      : 'bg-white/60 text-slate-700 hover:bg-white'
                   }`}
                 >
                   <div className="font-semibold">{book.name}</div>
@@ -146,14 +146,14 @@ export default function BibleReader({ onClose }) {
           </div>
 
           {/* Conteúdo Principal */}
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col bg-white">
             {selectedBook && !showBookList && (
               <>
                 {/* Navegação de Capítulos */}
-                <div className="p-4 bg-white/5 border-b border-white/10 flex items-center justify-between gap-4">
+                <div className="p-4 bg-gradient-to-r from-purple-50 to-orange-50 border-b border-purple-100 flex items-center justify-between gap-4">
                   <button
                     onClick={() => setShowBookList(true)}
-                    className="md:hidden text-white hover:bg-white/10 rounded-lg px-3 py-2"
+                    className="md:hidden text-slate-700 hover:bg-white/60 rounded-lg px-3 py-2"
                   >
                     ← Livros
                   </button>
@@ -161,17 +161,17 @@ export default function BibleReader({ onClose }) {
                     <button
                       onClick={() => handleChapterChange(selectedChapter - 1)}
                       disabled={selectedChapter === 1}
-                      className="bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg transition-all"
+                      className="bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed text-slate-700 px-4 py-2 rounded-lg transition-all border border-purple-100"
                     >
                       ← Anterior
                     </button>
-                    <span className="text-white font-semibold px-4">
+                    <span className="text-slate-700 font-semibold px-4">
                       Cap. {selectedChapter} / {selectedBook.chapters}
                     </span>
                     <button
                       onClick={() => handleChapterChange(selectedChapter + 1)}
                       disabled={selectedChapter === selectedBook.chapters}
-                      className="bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg transition-all"
+                      className="bg-white hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed text-slate-700 px-4 py-2 rounded-lg transition-all border border-purple-100"
                     >
                       Próximo →
                     </button>
@@ -179,23 +179,23 @@ export default function BibleReader({ onClose }) {
                 </div>
 
                 {/* Texto do Capítulo */}
-                <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
+                <div className="flex-1 overflow-y-auto custom-scrollbar p-6 bg-gradient-to-b from-white to-purple-50/30">
                   {loading ? (
                     <div className="flex items-center justify-center h-full">
                       <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-white/20 border-t-purple-500 mx-auto mb-4"></div>
-                        <p className="text-white/70">Carregando capítulo...</p>
+                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-200 border-t-purple-500 mx-auto mb-4"></div>
+                        <p className="text-slate-600">Carregando capítulo...</p>
                       </div>
                     </div>
                   ) : chapterContent ? (
                     <div className="max-w-3xl mx-auto">
-                      <h3 className="text-2xl font-bold text-white mb-6">
+                      <h3 className="text-2xl font-bold text-slate-800 mb-6">
                         {chapterContent.reference}
                       </h3>
                       <div className="space-y-4">
                         {chapterContent.verses.map((verse) => (
-                          <p key={verse.verse} className="text-white/90 leading-relaxed text-lg">
-                            <span className="text-purple-400 font-semibold mr-2">
+                          <p key={verse.verse} className="text-slate-700 leading-relaxed text-lg">
+                            <span className="text-purple-600 font-semibold mr-2">
                               {verse.verse}
                             </span>
                             {verse.text}
@@ -205,7 +205,7 @@ export default function BibleReader({ onClose }) {
                     </div>
                   ) : (
                     <div className="flex items-center justify-center h-full">
-                      <p className="text-white/50 text-lg">Selecione um livro para começar</p>
+                      <p className="text-slate-400 text-lg">Selecione um livro para começar</p>
                     </div>
                   )}
                 </div>
@@ -213,10 +213,10 @@ export default function BibleReader({ onClose }) {
             )}
 
             {!selectedBook && (
-              <div className="flex-1 flex items-center justify-center">
+              <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-purple-50 to-orange-50">
                 <div className="text-center">
                   <span className="text-6xl mb-4 block">📖</span>
-                  <p className="text-white/70 text-xl">Selecione um livro para começar a leitura</p>
+                  <p className="text-slate-600 text-xl">Selecione um livro para começar a leitura</p>
                 </div>
               </div>
             )}

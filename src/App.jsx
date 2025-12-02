@@ -98,7 +98,7 @@ function App() {
   const isFavorite = verse ? favorites.has(verse.reference) : false
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-950 to-slate-950 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-orange-50 to-white relative overflow-hidden">
       {toast && (
         <Toast 
           message={toast.message} 
@@ -111,19 +111,19 @@ function App() {
         <BibleReader onClose={() => setShowBibleReader(false)} />
       )}
 
-      <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}}></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-purple-900/10 to-black/30"></div>
+      <div className="absolute inset-0 opacity-40" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}}></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-100/20 via-orange-100/20 to-white/50"></div>
       
       <div className="relative z-10 p-4 min-h-screen flex flex-col">
         <div className="max-w-6xl mx-auto w-full">
           <header className="text-center mb-8 pt-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-400 via-orange-500 to-pink-500 rounded-2xl mb-4 shadow-2xl animate-float">
-              <span className="text-3xl">✨</span>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400 to-orange-400 rounded-2xl mb-4 shadow-lg animate-float">
+              <span className="text-3xl">📖</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-200 via-orange-300 to-pink-300 bg-clip-text text-transparent mb-2">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-orange-500 to-purple-600 bg-clip-text text-transparent mb-2">
               Devocional Diário
             </h1>
-            <p className="text-white/60 text-sm font-light">
+            <p className="text-slate-600 text-sm font-light">
               {new Date().toLocaleDateString('pt-BR', { 
                 weekday: 'long', 
                 year: 'numeric', 
@@ -135,16 +135,16 @@ function App() {
 
           {/* Versículo do Dia Fixo */}
           {verseOfDay && (
-            <div className="mb-8 backdrop-blur-xl bg-gradient-to-br from-amber-500/20 via-orange-500/20 to-pink-500/20 rounded-3xl shadow-2xl border border-amber-500/30 p-6 hover:shadow-amber-500/20 transition-all duration-300">
+            <div className="mb-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-purple-100 p-6 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-2xl">🌅</span>
-                <h2 className="text-xl font-bold text-amber-300">Versículo do Dia</h2>
+                <h2 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent">Versículo do Dia</h2>
               </div>
-              <div className="bg-black/20 rounded-2xl p-6 backdrop-blur-sm">
-                <p className="text-lg md:text-xl text-white font-light italic leading-relaxed mb-4">
+              <div className="bg-gradient-to-br from-purple-50 to-orange-50 rounded-2xl p-6 border border-purple-100">
+                <p className="text-lg md:text-xl text-slate-700 font-light italic leading-relaxed mb-4">
                   "{verseOfDay.text}"
                 </p>
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-orange-500 text-black px-4 py-2 rounded-full font-semibold text-sm">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-orange-500 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-md">
                   <span>✨</span>
                   {verseOfDay.reference}
                 </div>
@@ -152,15 +152,15 @@ function App() {
             </div>
           )}
 
-          <div className="backdrop-blur-xl bg-white/5 rounded-3xl shadow-2xl border border-white/10 p-8 mb-8 hover:border-purple-500/30 transition-all duration-300">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-purple-100 p-8 mb-8 hover:shadow-xl transition-all duration-300">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-1 h-8 bg-gradient-to-b from-purple-400 to-pink-500 rounded-full"></div>
-                <h2 className="text-2xl font-bold text-white">Explorar Versículos</h2>
+                <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-orange-500 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-slate-800">Explorar Versículos</h2>
               </div>
               <button
                 onClick={() => setShowBibleReader(true)}
-                className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-semibold flex items-center gap-2 text-sm"
+                className="bg-gradient-to-r from-purple-500 to-orange-500 text-white px-4 py-2 rounded-xl hover:from-purple-600 hover:to-orange-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-semibold flex items-center gap-2 text-sm"
               >
                 📖 Abrir Bíblia
               </button>
@@ -184,7 +184,7 @@ function App() {
               <button
                 onClick={getNewVerse}
                 disabled={loading}
-                className="bg-gradient-to-br from-purple-500 to-pink-600 text-white px-4 py-3 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-gradient-to-br from-purple-400 to-purple-500 text-white px-4 py-3 rounded-xl hover:from-purple-500 hover:to-purple-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 aria-label="Buscar versículo aleatório"
               >
                 <span className="text-xl">🎲</span>
@@ -193,7 +193,7 @@ function App() {
               <button
                 onClick={loadTodayVerse}
                 disabled={loading}
-                className="bg-gradient-to-br from-blue-500 to-cyan-600 text-white px-4 py-3 rounded-xl hover:from-blue-600 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-gradient-to-br from-orange-400 to-orange-500 text-white px-4 py-3 rounded-xl hover:from-orange-500 hover:to-orange-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 aria-label="Carregar versículo do dia"
               >
                 <span className="text-xl">🔄</span>
@@ -201,7 +201,7 @@ function App() {
               </button>
               <button
                 onClick={() => setShowSearch(!showSearch)}
-                className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white px-4 py-3 rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold flex items-center justify-center gap-2"
+                className="bg-gradient-to-br from-purple-400 to-orange-400 text-white px-4 py-3 rounded-xl hover:from-purple-500 hover:to-orange-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 font-semibold flex items-center justify-center gap-2"
                 aria-label="Abrir busca de versículo"
               >
                 <span className="text-xl">🔍</span>
@@ -210,7 +210,7 @@ function App() {
               <button
                 onClick={handleShare}
                 disabled={!verse}
-                className="bg-gradient-to-br from-orange-500 to-red-600 text-white px-4 py-3 rounded-xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-gradient-to-br from-slate-500 to-slate-600 text-white px-4 py-3 rounded-xl hover:from-slate-600 hover:to-slate-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 aria-label="Compartilhar versículo"
               >
                 <span className="text-xl">📤</span>
