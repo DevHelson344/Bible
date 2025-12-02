@@ -1,14 +1,18 @@
-# Devocional Diário
+# Devocional Diário ✨
 
-Sistema web de devocional diário da Bíblia construído com React e Tailwind CSS, integrado com API pública da Bíblia.
+Sistema web de devocional diário da Bíblia construído com React e Tailwind CSS, integrado com API pública da Bíblia. Design moderno com glassmorphism e animações suaves.
 
-## Funcionalidades
+## ✨ Funcionalidades
 
-- 📖 Versículo diário automático via API
+- 🌅 **Versículo do Dia Fixo** - Versículo especial que permanece o dia todo (atualiza automaticamente à meia-noite)
+- 📖 **Leitor de Bíblia Completo** - Navegue por todos os livros e capítulos da Bíblia
 - ✍️ Sistema de reflexões pessoais
 - 💾 Histórico de reflexões salvo localmente
+- ⭐ Sistema de favoritos
 - 🔄 Versículos aleatórios da API Bible
-- 📱 Design responsivo
+- 🔍 Busca por versículos específicos
+- 📱 Design responsivo e moderno
+- 🎨 Interface com glassmorphism e gradientes
 - 🔗 Compartilhamento de versículos
 - 🌐 Integração com Bible API (bible-api.com)
 
