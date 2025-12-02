@@ -21,8 +21,8 @@ function App() {
   const [verseOfDay, setVerseOfDay] = useState(null)
 
   useEffect(() => {
-    loadTodayVerse()
     loadVerseOfDay()
+    getNewVerse() // Carrega um versículo aleatório para explorar
   }, [])
 
   const loadVerseOfDay = async () => {
@@ -38,8 +38,9 @@ function App() {
         }
       }
       
-      const { getVerseOfTheDay } = await import('./bibleService')
-      const verse = await getVerseOfTheDay()
+      // Gera um versículo fixo baseado na data
+      const { getRandomVerse } = await import('./bibleService')
+      const verse = await getRandomVerse()
       setVerseOfDay(verse)
       localStorage.setItem('verseOfDay', JSON.stringify(verse))
       localStorage.setItem('verseOfDayDate', today)
@@ -98,7 +99,7 @@ function App() {
   const isFavorite = verse ? favorites.has(verse.reference) : false
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-orange-50 to-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-orange-100 to-pink-100 relative overflow-hidden">
       {toast && (
         <Toast 
           message={toast.message} 
@@ -111,19 +112,19 @@ function App() {
         <BibleReader onClose={() => setShowBibleReader(false)} />
       )}
 
-      <div className="absolute inset-0 opacity-40" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}}></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-100/20 via-orange-100/20 to-white/50"></div>
+      <div className="absolute inset-0 opacity-30" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"}}></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-200/30 via-orange-200/30 to-pink-200/30"></div>
       
       <div className="relative z-10 p-4 min-h-screen flex flex-col">
         <div className="max-w-6xl mx-auto w-full">
           <header className="text-center mb-8 pt-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400 to-orange-400 rounded-2xl mb-4 shadow-lg animate-float">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-orange-500 rounded-2xl mb-4 shadow-xl animate-float">
               <span className="text-3xl">📖</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-orange-500 to-purple-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-700 via-orange-600 to-pink-600 bg-clip-text text-transparent mb-2">
               Devocional Diário
             </h1>
-            <p className="text-slate-600 text-sm font-light">
+            <p className="text-slate-700 text-sm font-medium">
               {new Date().toLocaleDateString('pt-BR', { 
                 weekday: 'long', 
                 year: 'numeric', 
@@ -135,20 +136,26 @@ function App() {
 
           {/* Versículo do Dia Fixo */}
           {verseOfDay && (
-            <div className="mb-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-purple-100 p-6 hover:shadow-xl transition-all duration-300">
+            <div className="mb-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl border-2 border-purple-300 p-6 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="absolute top-3 right-3 bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                📌 Fixo
+              </div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-2xl">🌅</span>
                 <h2 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent">Versículo do Dia</h2>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-orange-50 rounded-2xl p-6 border border-purple-100">
-                <p className="text-lg md:text-xl text-slate-700 font-light italic leading-relaxed mb-4">
+              <div className="bg-gradient-to-br from-purple-100 to-orange-100 rounded-2xl p-6 border border-purple-200">
+                <p className="text-lg md:text-xl text-slate-800 font-light italic leading-relaxed mb-4">
                   "{verseOfDay.text}"
                 </p>
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-orange-500 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-md">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-orange-500 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
                   <span>✨</span>
                   {verseOfDay.reference}
                 </div>
               </div>
+              <p className="text-xs text-slate-500 mt-3 text-center">
+                Este versículo permanece o mesmo durante todo o dia
+              </p>
             </div>
           )}
 
