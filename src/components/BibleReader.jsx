@@ -10,50 +10,50 @@ export default function BibleReader({ onClose }) {
   const [showBookList, setShowBookList] = useState(true)
 
   const bibleBooks = [
-    { name: 'Gênesis', id: 'Genesis', chapters: 50 },
-    { name: 'Êxodo', id: 'Exodus', chapters: 40 },
-    { name: 'Levítico', id: 'Leviticus', chapters: 27 },
-    { name: 'Números', id: 'Numbers', chapters: 36 },
-    { name: 'Deuteronômio', id: 'Deuteronomy', chapters: 34 },
-    { name: 'Josué', id: 'Joshua', chapters: 24 },
-    { name: 'Juízes', id: 'Judges', chapters: 21 },
-    { name: 'Rute', id: 'Ruth', chapters: 4 },
-    { name: '1 Samuel', id: '1Samuel', chapters: 31 },
-    { name: '2 Samuel', id: '2Samuel', chapters: 24 },
-    { name: '1 Reis', id: '1Kings', chapters: 22 },
-    { name: '2 Reis', id: '2Kings', chapters: 25 },
-    { name: 'Salmos', id: 'Psalms', chapters: 150 },
-    { name: 'Provérbios', id: 'Proverbs', chapters: 31 },
-    { name: 'Eclesiastes', id: 'Ecclesiastes', chapters: 12 },
-    { name: 'Isaías', id: 'Isaiah', chapters: 66 },
-    { name: 'Jeremias', id: 'Jeremiah', chapters: 52 },
-    { name: 'Mateus', id: 'Matthew', chapters: 28 },
-    { name: 'Marcos', id: 'Mark', chapters: 16 },
-    { name: 'Lucas', id: 'Luke', chapters: 24 },
-    { name: 'João', id: 'John', chapters: 21 },
-    { name: 'Atos', id: 'Acts', chapters: 28 },
-    { name: 'Romanos', id: 'Romans', chapters: 16 },
-    { name: '1 Coríntios', id: '1Corinthians', chapters: 16 },
-    { name: '2 Coríntios', id: '2Corinthians', chapters: 13 },
-    { name: 'Gálatas', id: 'Galatians', chapters: 6 },
-    { name: 'Efésios', id: 'Ephesians', chapters: 6 },
-    { name: 'Filipenses', id: 'Philippians', chapters: 4 },
-    { name: 'Colossenses', id: 'Colossians', chapters: 4 },
-    { name: '1 Tessalonicenses', id: '1Thessalonians', chapters: 5 },
-    { name: '2 Tessalonicenses', id: '2Thessalonians', chapters: 3 },
-    { name: '1 Timóteo', id: '1Timothy', chapters: 6 },
-    { name: '2 Timóteo', id: '2Timothy', chapters: 4 },
-    { name: 'Tito', id: 'Titus', chapters: 3 },
-    { name: 'Filemom', id: 'Philemon', chapters: 1 },
-    { name: 'Hebreus', id: 'Hebrews', chapters: 13 },
-    { name: 'Tiago', id: 'James', chapters: 5 },
-    { name: '1 Pedro', id: '1Peter', chapters: 5 },
-    { name: '2 Pedro', id: '2Peter', chapters: 3 },
-    { name: '1 João', id: '1John', chapters: 5 },
-    { name: '2 João', id: '2John', chapters: 1 },
-    { name: '3 João', id: '3John', chapters: 1 },
-    { name: 'Judas', id: 'Jude', chapters: 1 },
-    { name: 'Apocalipse', id: 'Revelation', chapters: 22 }
+    { name: 'Gênesis', id: 'genesis', chapters: 50 },
+    { name: 'Êxodo', id: 'exodus', chapters: 40 },
+    { name: 'Levítico', id: 'leviticus', chapters: 27 },
+    { name: 'Números', id: 'numbers', chapters: 36 },
+    { name: 'Deuteronômio', id: 'deuteronomy', chapters: 34 },
+    { name: 'Josué', id: 'joshua', chapters: 24 },
+    { name: 'Juízes', id: 'judges', chapters: 21 },
+    { name: 'Rute', id: 'ruth', chapters: 4 },
+    { name: '1 Samuel', id: '1samuel', chapters: 31 },
+    { name: '2 Samuel', id: '2samuel', chapters: 24 },
+    { name: '1 Reis', id: '1kings', chapters: 22 },
+    { name: '2 Reis', id: '2kings', chapters: 25 },
+    { name: 'Salmos', id: 'psalms', chapters: 150 },
+    { name: 'Provérbios', id: 'proverbs', chapters: 31 },
+    { name: 'Eclesiastes', id: 'ecclesiastes', chapters: 12 },
+    { name: 'Isaías', id: 'isaiah', chapters: 66 },
+    { name: 'Jeremias', id: 'jeremiah', chapters: 52 },
+    { name: 'Mateus', id: 'matthew', chapters: 28 },
+    { name: 'Marcos', id: 'mark', chapters: 16 },
+    { name: 'Lucas', id: 'luke', chapters: 24 },
+    { name: 'João', id: 'john', chapters: 21 },
+    { name: 'Atos', id: 'acts', chapters: 28 },
+    { name: 'Romanos', id: 'romans', chapters: 16 },
+    { name: '1 Coríntios', id: '1corinthians', chapters: 16 },
+    { name: '2 Coríntios', id: '2corinthians', chapters: 13 },
+    { name: 'Gálatas', id: 'galatians', chapters: 6 },
+    { name: 'Efésios', id: 'ephesians', chapters: 6 },
+    { name: 'Filipenses', id: 'philippians', chapters: 4 },
+    { name: 'Colossenses', id: 'colossians', chapters: 4 },
+    { name: '1 Tessalonicenses', id: '1thessalonians', chapters: 5 },
+    { name: '2 Tessalonicenses', id: '2thessalonians', chapters: 3 },
+    { name: '1 Timóteo', id: '1timothy', chapters: 6 },
+    { name: '2 Timóteo', id: '2timothy', chapters: 4 },
+    { name: 'Tito', id: 'titus', chapters: 3 },
+    { name: 'Filemom', id: 'philemon', chapters: 1 },
+    { name: 'Hebreus', id: 'hebrews', chapters: 13 },
+    { name: 'Tiago', id: 'james', chapters: 5 },
+    { name: '1 Pedro', id: '1peter', chapters: 5 },
+    { name: '2 Pedro', id: '2peter', chapters: 3 },
+    { name: '1 João', id: '1john', chapters: 5 },
+    { name: '2 João', id: '2john', chapters: 1 },
+    { name: '3 João', id: '3john', chapters: 1 },
+    { name: 'Judas', id: 'jude', chapters: 1 },
+    { name: 'Apocalipse', id: 'revelation', chapters: 22 }
   ]
 
   useEffect(() => {
@@ -63,12 +63,12 @@ export default function BibleReader({ onClose }) {
   const loadChapter = async (book, chapter) => {
     setLoading(true)
     try {
-      // Formata a requisição corretamente para a API
-      const bookName = book.replace(/\s+/g, '')
-      const response = await axios.get(
-        `https://bible-api.com/${bookName}${chapter}?translation=almeida`,
-        { timeout: 10000 }
-      )
+      // A API usa formato: livro+capitulo (ex: john+3, genesis+1)
+      const bookName = book.toLowerCase().replace(/\s+/g, '')
+      const url = `https://bible-api.com/${bookName}+${chapter}?translation=almeida`
+      console.log('Carregando:', url)
+      
+      const response = await axios.get(url, { timeout: 10000 })
       setChapterContent(response.data)
       setShowBookList(false)
     } catch (error) {
